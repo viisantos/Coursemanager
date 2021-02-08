@@ -9,7 +9,8 @@ import { CModule } from './courses/c.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from './model/course';
 
-
 @Component({
   selector: 'app-c-info',
   templateUrl: './c-info.component.html',
@@ -17,14 +16,19 @@ export class CInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseService.retornaPorId(+this.activatedRoute.snapshot.paramMap.get('id')!).subscribe({
-      next: course => this.course = course,
+      next: course => {
+        this.course = course;
+      },
       error: err => console.log('Error', err)
     });
   }
 
   save(): void {
     this.courseService.salvar(this.course).subscribe({
-      next: course => console.log('salvo com sucesso : ', course),
+      next: course => {
+        console.log('salvo com sucesso : ', course);
+        alert("Alterações feitas com sucesso!");
+      },
       error: err => console.log('Erro : ', err )
     });
   }
