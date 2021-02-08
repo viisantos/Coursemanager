@@ -27,7 +27,9 @@
             <td>{{ c.price }}</td>
             <td>{{ c.code | lowercase }}</td>
             <td>{{ c.releaseDate | date: 'dd/MM/yyyy' }}</td>
-            <td> Rating </td>
+            <td>
+              <star [rating]="c.rating"></star>
+            </td>
             <td>
               <a [routerLink]="['/courses/info', c.id]" class="btn btn-outline-primary mr-2"><i class="large material-icons">mode_edit</i> Edit</a>
               <button (click)="deleteById(c.id)" class="btn btn-outline-danger"><i class="large material-icons">delete</i>Delete</button>
