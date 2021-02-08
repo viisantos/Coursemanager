@@ -1,0 +1,62 @@
+<h2>Editar curso</h2>
+<hr/>
+
+<form #courseForm="ngForm" *ngIf="course">
+<!--a diretiva ngForm permite que possamos fazer
+  uma referencia ao formulário utilizando uma
+  variável para isso. Na verdade, ela serve para que
+  possamos gerenciar o formulário.-->
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Name:</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="course.name" required name="name" #courseName="ngModel" [ngClass]="{'is-invalid': courseName.invalid}" class="form-control">
+      <!--Através de ngModel podemos fazer data-binding simples (atualizar no template)
+      ou two-way-databinding(Atualizar o valor no template e no typeScript.)
+      A variável local #courseName recebe como valor "ngModel". Esta é a referencia a este campo.-->
+      <div class="invalid-feedback">
+      <!--Esta span só é exibida se o campo de nome for inválido, isto é, se ocorrer a classe 'is-invalid'-->
+        <span>Course name is required</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Price:</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="course.price" required name="price" #coursePrice="ngModel" type="number"
+        [ngClass]="{'is-invalid': coursePrice.invalid}" class="form-control">
+
+        <div class="invalid-feedback">
+          <span>Course price is required</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Rating:</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="course.rating" required name="rating" #courseRating="ngModel" type="number"
+        [ngClass]="{'is-invalid':courseRating.invalid}" class="form-control">
+      <div class="invalid-feedback">
+        <span>Course rating is required</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Description:</label>
+    <div class="col-sm-10">
+      <textarea [(ngModel)]="course.description" required name="description" #courseDescription="ngModel"
+        [ngClass]="{'is-invalid': courseDescription.invalid}" class="form-control"></textarea>
+
+      <div class="invalid-feedback">
+        <span>Course description is required</span>
+      </div>
+    </div>
+  </div>
+
+  <button [disabled]="courseForm.invalid" (click)="save()" class="btn btn-primary mr-2">Save</button>
+  <button [routerLink]="['/courses']" class="btn btn-secondary">Back</button>
+
+</form>
