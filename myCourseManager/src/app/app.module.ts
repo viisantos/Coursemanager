@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CModule } from './courses/c.module';
-
+import { CoreModule } from './core/core.module';
+import { AppPipeModule } from './pipe/app-pipe.module';
 
 
 @NgModule({
@@ -17,9 +18,11 @@ import { CModule } from './courses/c.module';
     AppRoutingModule,
     HttpClientModule,
     CModule,
+    CoreModule,
+    AppPipeModule,
     RouterModule.forRoot([
       {
-        path: '', redirectTo: 'courses', pathMatch: 'full'
+        path: '', redirectTo: '', pathMatch: 'full'
       }
     ]),
     //CoreModule
